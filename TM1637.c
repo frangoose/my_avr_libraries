@@ -78,3 +78,35 @@ void TM_clkhigh()
     TM_PORT |=  (1<<TM_CLK); // set CLK pin to logic HIGH to enable pull-up resistor
     _delay_us(TM_DELAY);
 }
+
+void TM_clearDisplay()
+{
+    TM_start();
+    TM_send(TM_AUTOADDR);
+    TM_stop();
+
+    TM_start();
+    TM_send(TM_GRID1);
+    TM_send(0x00);
+    TM_send(0x00);
+    TM_send(0x00);
+    TM_send(0x00);
+    TM_send(0x00);
+    TM_send(0x00);
+    TM_stop();
+}
+
+void TM_printValue(uint8_t grid1, uint8_t grid2, uint8_t grid3, uint8_t grid4)
+{
+    TM_start();
+    TM_send(TM_AUTOADDR);
+    TM_stop();
+
+    TM_start();
+    TM_send(TM_GRID1);
+    TM_send(grid1);
+    TM_send(grid2);
+    TM_send(grid3);
+    TM_send(grid4);
+    TM_stop();
+}

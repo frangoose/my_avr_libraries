@@ -11,7 +11,7 @@
 #define F_CPU 16000000UL
 #endif
 
-#define TM_DELAY 100 // microseconds
+#define TM_DELAY 5 // microseconds
 
 // IO Macros
 #define TM_DDR  DDRD
@@ -42,6 +42,7 @@ void TM_diolow();
 void TM_diohigh();
 void TM_clklow();
 void TM_clkhigh();
-
+void TM_clearDisplay();
+void TM_printValue(uint8_t grid1, uint8_t grid2, uint8_t grid3, uint8_t grid4);
 
 #endif
